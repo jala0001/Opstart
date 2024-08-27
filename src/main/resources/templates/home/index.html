@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<h1>Hi Spring boot</h1>
+<td>Create user</td>
+<form action="/addUser" method="post">
+    <td>Name</td><td><input type="text" name="name"></td>
+    <td>Age</td><td><input type="number" name="age"></td>
+    <button type="submit">Add user</button>
+
+    <table>
+        <thead><td>ID</td><td>name</td><td>age</td></thead>
+        <tr th:each="person : ${persons}">
+            <td th:text="${person.personId}"></td>
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.age}"></td>
+            <td>
+                <form action="/removeUser" method="post">
+                    <input type="hidden" name="personId" th:value="${person.personId}">
+                    <button type="submit">Remove user</button>
+                </form>
+            </td>
+            <td th:text="${person.personId}"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
